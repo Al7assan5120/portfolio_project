@@ -15,4 +15,3 @@ class User(BaseModel, Base):
         """initializes user"""
         super().__init__(*args, **kwargs)
 
-# print(model.storage.all())
