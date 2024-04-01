@@ -16,7 +16,7 @@ mail = Mail(app)
 
 @app.route("/", methods=["GET"])
 def idnex():
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 @app.route("/newapp", methods=["GET", "POST"])
@@ -30,7 +30,7 @@ def index():
         # Sending Email
         message_body = f"Thanks {newUser.first_name} for submission, Please find your id to be able to track the status of your form.\n" \
             f"id = {newUser.id}"
-                
+
         message = Message(subject="New Form Submission",
                           sender=app.config["MAIL_USERNAME"],
                           recipients=[newUser.email],
@@ -41,7 +41,7 @@ def index():
         # Submission Success Message!
         flash(f"{newUser.first_name}, Your form was submitted successfully, For tracking purposes we've sent id of your form to {newUser.email}!", "success")
 
-    return render_template('index.html')
+    return render_template('newapp.html')
 
 
 
