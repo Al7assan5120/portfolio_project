@@ -15,7 +15,8 @@ app.config["MAIL_PASSWORD"] = "gswntjlzalbihyjg"
 mail = Mail(app)
 
 @app.route("/", methods=["GET"])
-def idnex():
+@app.route("/home", methods=["GET"])
+def home():
     return render_template('home.html')
 
 
@@ -35,7 +36,6 @@ def index():
                           sender=app.config["MAIL_USERNAME"],
                           recipients=[newUser.email],
                           body=message_body)
-
         mail.send(message)
 
         # Submission Success Message!
@@ -44,22 +44,25 @@ def index():
     return render_template('newapp.html')
 
 
-
-
-
 @app.route("/tracking", methods=["GET", "POST"])
 def tracking():
     if request.method == "POST":
         userId = request.form.get('ID')
         user = storage.get(userId)
-        print(userId, user)
+        print(user, userId)
         if (user == "None"):
-            print("amr")
             flash ("Invalid ID", "faild")
-        else:
-            flash (f"{user.first_name}, Your Application current status is : {user.status}", "success")
+
+        flash (f"{user.first_name}, Your Application current status is : {user.status}", "success")
 
     return render_template('tracking.html')
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        return render_template('login.html')
+    return render_template('login.html')
 
 
 if __name__ == "__main__":
