@@ -1,4 +1,17 @@
 #!/usr/bin/python3
-import model
+from model.admin import Admin
+from model import storage
 
-print(model.storage.get("32bcc621-f692-4aec-ba0a-b210701803c2"))
+admin_data = {
+        "first_name": "Alhassan",
+        "last_name": "Ramadan",
+        "password": "hassan123",
+        "email": "alhassan@gmail.com"
+    }
+
+admin1 = Admin(**admin_data)
+storage.new(admin1)
+storage.save()
+
+print(admin1.first_name)
+print(admin1.password)
