@@ -77,7 +77,6 @@ def login():
         admin = storage.all(Admin)
 
         for admins in admin.values():
-            print(admins)
             if admins.email == email:
                 if admins.password == HpassWord:
                     login_user(admins)
@@ -93,7 +92,19 @@ def login():
 @app.route('/dashboard', methods=["GET", "POST"])
 @login_required
 def dashboard():
-    return render_template('dashboard.html')
+    if request.method == 'POST':
+        status = request.form.get('new_status')
+        userId = request.form.get('user_id')
+        user = storage.get(User, userId)
+        user.status = status
+        storage.save()
+        flash (f"Status of {user.first_name} changed to {user.status}", "success")
+        
+    all_users = storage.all(User).values()
+    list_users = []
+    for user in all_users:
+        list_users.append(user.to_dict())
+    return render_template('dashboard.html', list_users = list_users)
 
 
 @app.route('/logout', methods=["GET"])

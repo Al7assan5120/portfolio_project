@@ -3,10 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Dashboard</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
+        text-align: left;
+      }
+    </style>
   </head>
   <body>
-    <h1>You are logged in</h1>
+    <!-- Loop through each user and create a table row for them -->
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Email</th>
+          <th>Submit Date</th>
+          <th>Available Date</th>
+          <th>Occupation</th>
+          <th>Current Status</th>
+          <th>New Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in list_users %}
+        <tr>
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.submitDate }}</td>
+          <td>{{ user.availableDate }}</td>
+          <td>{{ user.occupation }}</td>
+          <td>{{ user.status }}</td>
+          <td>
+            <form method="POST">
+              <input type="hidden" name="user_id" value="{{ user.id }}" />
+              <select name="new_status">
+                <option value="Pending">Pending</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Rejected">Rejected</option>
+              </select>
+              <input type="submit" value="Update Status" />
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <div>{% for message in messages %} {{ message }} {% endfor %}</div>
+    {% endif %} {% endwith %}
     <a href="{{ url_for('logout') }}">Logout</a>
   </body>
 </html>
