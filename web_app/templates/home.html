@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Job Application</title>
+    <title>home</title>
 
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
     />
+    <style>
+      .image-container {
+          float: right;
+          width: 35%;
+          padding: 20px;
+          border-radius: 10px; /* Image border radius */
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Image shadow */
+
+      }
+      .main-pos
+      {
+          position: absolute;
+          width: 80%;
+          left: 10%;
+          top: 30%;
+          padding: 30px;
+      }
+  </style>
   </head>
   <body>
     <header>
@@ -25,15 +43,18 @@
       </nav>
     </header>
     <main>
-      <h2>Welcome to Our Job Application Website</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-      <!-- Add more sections as needed, such as a list of job openings, application instructions, etc. -->
-    </main>
+      <div class="main-pos">
+          <img class="image-container" src="img/tracking img.jpg" alt="image">
+          <h2>Welcome to Our Job Application platform</h2>
+          <p>
+              where talent meets opportunity.
+              Streamlined interface, diverse listings, and personalized profiles make job hunting effortless.
+              Join us for a seamless path to your dream career!.
+          </p>
+      </div>
+  </main>
     <footer>
-      <p>© 2023 Company Name</p>
+      <p>© 2024 Jobbify</p>
     </footer>
   </body>
 </html>
