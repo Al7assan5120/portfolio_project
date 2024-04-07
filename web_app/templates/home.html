@@ -9,22 +9,20 @@
     />
     <style>
       .image-container {
-          float: right;
-          width: 35%;
-          padding: 20px;
-          border-radius: 10px; /* Image border radius */
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Image shadow */
-
+        float: right;
+        width: 35%;
+        padding: 20px;
+        border-radius: 10px; /* Image border radius */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Image shadow */
       }
-      .main-pos
-      {
-          position: absolute;
-          width: 80%;
-          left: 10%;
-          top: 30%;
-          padding: 30px;
+      .main-pos {
+        position: absolute;
+        width: 80%;
+        left: 10%;
+        top: 30%;
+        padding: 30px;
       }
-  </style>
+    </style>
   </head>
   <body>
     <header>
@@ -44,15 +42,19 @@
     </header>
     <main>
       <div class="main-pos">
-          <img class="image-container" src="img/tracking img.jpg" alt="image">
-          <h2>Welcome to Our Job Application platform</h2>
-          <p>
-              where talent meets opportunity.
-              Streamlined interface, diverse listings, and personalized profiles make job hunting effortless.
-              Join us for a seamless path to your dream career!.
-          </p>
+        <img
+          class="image-container"
+          src="{{ url_for('static', filename='images/tracking img.jpg') }}"
+          alt="image"
+        />
+        <h2>Welcome to Our Job Application platform</h2>
+        <p>
+          where talent meets opportunity. Streamlined interface, diverse
+          listings, and personalized profiles make job hunting effortless. Join
+          us for a seamless path to your dream career!.
+        </p>
       </div>
-  </main>
+    </main>
     <footer>
       <p>© 2024 Jobbify</p>
     </footer>
