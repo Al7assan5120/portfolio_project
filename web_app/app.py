@@ -113,5 +113,10 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
+@app.route("/about", methods=["GET"])
+def about():
+    return render_template('about.html')
+
+
 if __name__ == "__main__":
     app.run()
